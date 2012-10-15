@@ -6,7 +6,7 @@ module WheneverRoles
   module_function
   def R(environments=[], *roles)
     if environments == :all
-      environments = KNOWN_ENVIRONMENTS
+      environments = known_environments
     end
     environments.product(roles).map {|comb| comb.map(&:to_s).join('_') }.map(&:to_sym)
   end

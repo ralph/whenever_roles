@@ -2,7 +2,6 @@ require 'whenever_roles/version'
 require 'whenever'
 
 module WheneverRoles
-  KNOWN_ENVIRONMENTS = [:production, :staging]
   module_function
   def R(environments=[], *roles)
     if environments == :all
@@ -13,7 +12,7 @@ module WheneverRoles
 
 private
   def known_environments
-    defined?(::KNOWN_ENVIRONMENTS) ? ::KNOWN_ENVIRONMENTS : KNOWN_ENVIRONMENTS
+    @known_environments || [:production, :staging]
   end
 end
 
